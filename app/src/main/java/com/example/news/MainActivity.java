@@ -45,7 +45,7 @@ public class MainActivity extends AppCompatActivity {
                 String url = "https://notify-api.line.me/api/notify";    ///API line///
                 String token ="";    /// line Token///
                 text = editText.getText().toString();    ///get message to text variable ///
-                RequestBody requestBody = new MultipartBody.Builder() /// Create object requestBody ////
+                RequestBody requestBody = new MultipartBody.Builder() /// Create requestBody  for send message to line////
                         .setType(MultipartBody.FORM)
                         .addFormDataPart("message", text)
                         .build();
@@ -58,7 +58,7 @@ public class MainActivity extends AppCompatActivity {
                         .header("Authorization","Bearer "+token)
                         .build();
 
-                client.newCall(request).enqueue(new Callback() {   //// Call API
+                client.newCall(request).enqueue(new Callback() {   //// Call http
                     @Override
                     public void onFailure(Call call, IOException e) {
                         String mMessage = e.getMessage().toString();
